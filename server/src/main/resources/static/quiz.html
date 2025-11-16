@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:,">
+    <title>Тест на знание перевода</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .quiz-container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .quiz-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .quiz-title {
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .quiz-info {
+            color: #666;
+            font-size: 16px;
+        }
+        
+        .question-card {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-left: 4px solid #007bff;
+        }
+        
+        .question-text {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .option {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            background: white;
+            border: 2px solid #e9ecef;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .option:hover {
+            border-color: #007bff;
+            background: #f8f9ff;
+        }
+        
+        .option.selected {
+            border-color: #007bff;
+            background: #e3f2fd;
+        }
+        
+        .option input[type="radio"] {
+            margin-right: 10px;
+        }
+        
+        .quiz-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+        
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.2s;
+        }
+        
+        .btn-primary {
+            background: #007bff;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #0056b3;
+        }
+        
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            background: #545b62;
+        }
+        
+        .result-container {
+            text-align: center;
+            padding: 30px;
+        }
+        
+        .result-title {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .score {
+            font-size: 48px;
+            font-weight: bold;
+            color: #28a745;
+            margin: 20px 0;
+        }
+        
+        .grade {
+            font-size: 20px;
+            color: #666;
+            margin-bottom: 30px;
+        }
+        
+        .result-details {
+            text-align: left;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .result-question {
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 6px;
+            background: #f8f9fa;
+        }
+        
+        .result-question.correct {
+            background: #d4edda;
+            border-left: 4px solid #28a745;
+        }
+        
+        .result-question.incorrect {
+            background: #f8d7da;
+            border-left: 4px solid #dc3545;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 50px;
+            font-size: 18px;
+            color: #666;
+        }
+        
+        .error {
+            text-align: center;
+            padding: 50px;
+            color: #dc3545;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="quiz-container">
+            <div id="loading" class="loading">
+                Загрузка теста...
+            </div>
+            
+            <div id="quiz-content" style="display: none;">
+                <div class="quiz-header">
+                    <h1 class="quiz-title" id="quiz-title">Тест на знание перевода</h1>
+                    <div class="quiz-info" id="quiz-info"></div>
+                </div>
+                
+                <form id="quiz-form">
+                    <div id="questions-container"></div>
+                    
+                    <div class="quiz-actions">
+                        <button type="button" class="btn btn-secondary" onclick="goBack()">← Назад к переводам</button>
+                        <button type="submit" class="btn btn-primary">Завершить тест</button>
+                    </div>
+                </form>
+            </div>
+            
+            <div id="result-content" style="display: none;">
+                <div class="result-container">
+                    <h2 class="result-title">Результаты теста</h2>
+                    <div class="score" id="score">0%</div>
+                    <div class="grade" id="grade">Незачет</div>
+                    <div class="result-details" id="result-details"></div>
+                    <button class="btn btn-primary" onclick="goBack()">← Назад к переводам</button>
+                </div>
+            </div>
+            
+            <div id="error-content" style="display: none;" class="error">
+                <h2>Ошибка</h2>
+                <p id="error-message">Произошла ошибка при загрузке теста</p>
+                <button class="btn btn-primary" onclick="goBack()">← Назад к переводам</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="quiz.js"></script>
+</body>
+</html>

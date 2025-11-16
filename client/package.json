@@ -1,0 +1,25 @@
+{
+  "name": "translator-client",
+  "version": "1.0.0",
+  "description": "Frontend для Translator with educational functions - переводчика с образовательными функциями",
+  "main": "index.html",
+  "scripts": {
+    "dev": "http-server src",
+    "start": "http-server src -p 3000"
+  },
+  "keywords": [
+    "frontend",
+    "html",
+    "javascript",
+    "language-learning",
+    "translation"
+  ],
+  "author": "Translator Team",
+  "license": "MIT",
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  },
+  "dependencies": {
+    "axios": "^1.9.0"
+  }
+}

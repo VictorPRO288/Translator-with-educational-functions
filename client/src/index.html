@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:,">
+    <title>Переводчик с образовательными функциями</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Переводчик с образовательными функциями</h1>
+            <div class="tabs">
+            </div>
+        </header>
+
+        <main>
+            <section id="translationsPanel">
+                <div class="lang-select">
+                    <select id="inputSourceLang">
+                        <option value="en">Английский</option>
+                        <option value="ru">Русский</option>
+                        <option value="es">Испанский</option>
+                        <option value="fr">Французский</option>
+                        <option value="de">Немецкий</option>
+                        <option value="ja">Японский</option>
+                        <option value="it">Итальянский</option>
+                    </select>
+                    <button id="swapLangs", onclick="swapLangsFucntion()">⇄</button>
+                    <select id="inputTargetLang">
+                        <option value="ru">Русский</option>
+                        <option value="en">Английский</option>
+                        <option value="es">Испанский</option>
+                        <option value="fr">Французский</option>
+                        <option value="de">Немецкий</option>
+                        <option value="ja">Японский</option>
+                        <option value="it">Итальянский</option>
+                    </select>
+                </div>
+
+                <div class="translate-area">
+                    <textarea id="inputFieldTranslation" placeholder="Введите текст для перевода с образовательными функциями"></textarea>
+                    <div class="arrow">→</div>
+                    <textarea id="outputFieldTranslation" placeholder="Перевод" readonly></textarea>
+                </div>
+
+                <div class="actions">
+                    <button id="addTranslationBtn">Перевести</button>
+                </div>
+                <!-- Simple modal for IPA and examples -->
+                <div id="modal" class="modal" style="display:none; position:fixed; left:0; top:0; right:0; bottom:0; background:rgba(0,0,0,0.4); align-items:center; justify-content:center; z-index:9999;">
+                    <div class="modal-content" style="background:#fff; color:#000; max-width:600px; width:90%; padding:20px; border-radius:12px; box-shadow:0 10px 30px rgba(0,0,0,0.3);">
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+                            <h3 id="modal-title" style="margin:0;">Транскрипция и примеры</h3>
+                            <button id="modal-close" style="background:#eee; border:0; padding:6px 10px; border-radius:8px; cursor:pointer;">✕</button>
+                        </div>
+                        <div id="modal-body"></div>
+                    </div>
+                </div>
+                <ul id="translationsList"></ul>
+            </section>
+        </main>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    </div>
+    <script
+    src="function.js">
+    </script>
+</body>
+</html>
